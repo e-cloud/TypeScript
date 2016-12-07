@@ -30,7 +30,7 @@ interface Array<T> {
       * @param thisArg If provided, it will be used as the this value for each invocation of
       * predicate. If it is not provided, undefined is used instead.
       */
-    find(predicate: (value: T, index: number, obj: Array<T>) => boolean, thisArg?: any): T | undefined;
+    find<Z>(predicate: (this: Z, value: T, index: number, obj: Array<T>) => boolean, thisArg?: Z): T | undefined;
 
     /**
       * Returns the index of the first element in the array where predicate is true, and -1
@@ -41,7 +41,7 @@ interface Array<T> {
       * @param thisArg If provided, it will be used as the this value for each invocation of
       * predicate. If it is not provided, undefined is used instead.
       */
-    findIndex(predicate: (value: T, index: number, obj: Array<T>) => boolean, thisArg?: any): number;
+    findIndex<Z>(predicate: (this: Z, value: T, index: number, obj: Array<T>) => boolean, thisArg?: Z): number;
 
     /**
       * Returns the this object after filling the section identified by start and end with value
@@ -377,7 +377,7 @@ interface ReadonlyArray<T> {
     * @param thisArg If provided, it will be used as the this value for each invocation of
     * predicate. If it is not provided, undefined is used instead.
     */
-  find(predicate: (value: T, index: number, obj: ReadonlyArray<T>) => boolean, thisArg?: any): T | undefined;
+  find<Z>(predicate: (this: Z, value: T, index: number, obj: ReadonlyArray<T>) => boolean, thisArg?: Z): T | undefined;
 
   /**
     * Returns the index of the first element in the array where predicate is true, and -1
@@ -388,7 +388,7 @@ interface ReadonlyArray<T> {
     * @param thisArg If provided, it will be used as the this value for each invocation of
     * predicate. If it is not provided, undefined is used instead.
     */
-  findIndex(predicate: (value: T, index: number, obj: Array<T>) => boolean, thisArg?: any): number;
+  findIndex<Z>(predicate: (this: Z, value: T, index: number, obj: Array<T>) => boolean, thisArg?: Z): number;
 }
 
 interface RegExp {
